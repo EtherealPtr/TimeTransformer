@@ -1,1 +1,64 @@
-<h1>Hello!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Clocker</title>
+
+	<meta name="viewport" content="device-width, initial-scale = 1">
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+
+	<div id="main"> 
+
+		<fieldset id="field">
+			<legend id="heading"><h1>Welcome to Time Transformer!</h1></legend>
+			<h3 id="clock-01" class="clock"></h3>
+			<h3 id="clock-02" class="clock"></h3>
+
+			<input type="checkbox" id="customConvertOpt">
+			<label for="customConvertOpt" onclick="DisplayCustom(true)">I would like to convert a custom time</label>
+			
+			<div id="customConvertPanel">
+				<p>Convert From: 
+				<select id="selectBox" onchange="Selector()">
+					<option value="0" disabled selected hidden>Please choose...</option>
+					<option value="1">12-hour to 24-hour</option>
+					<option value="2">24-hour to 12-hour</option>
+				</select></p>
+			</div>
+
+			<div id="customTimeInputPanel">
+				<p>Enter time <em>(hh:mm:ss)</em>:
+					<input id="hoursId24" class="hours" type="text" minlength="0" maxlength="2"> : 
+					<input id="minId24" class="hours" type="text" minlength="0" maxlength="2"> : 
+					<input id="secId24" class="hours" type="text" minlength="0" maxlength="2">
+				</p>
+				<input id="toTwelveHourClockBtn" type="submit" value="Apply" onclick="Convert24To12()">
+			</div>
+
+			<div id="customTimeInputPanel_AM_PM">
+				<p>Enter time <em>(hh:mm:ss)</em>: 
+					<input id="hoursId12" class="hours" type="text" minlength="0" maxlength="2"> : 
+					<input id="minId12" class="hours" type="text" minlength="0" maxlength="2"> : 
+					<input id="secId12" class="hours" type="text" minlength="0" maxlength="2">
+
+					<select id="selectTimerBox">
+						<option value="0">AM</option>
+						<option value="1">PM</option>
+					</select></p> 
+
+				<input id="toTwentyFourHourClockBtn" type="submit" value="Apply" onclick="Convert12To24()">
+			</div>
+
+			<h2 id="finalTime"></h2>
+
+			<script src="main.js"></script>
+
+		</fieldset>
+	</div> <!-- main div -->
+
+	<footer id="footer"><p>Created by <a href="https://RonyHanna.com" target="_blank">Rony Hanna</a>.</p></footer>
+
+</body>
+</html>
