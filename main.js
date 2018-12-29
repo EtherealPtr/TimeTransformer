@@ -1,5 +1,4 @@
 window.setInterval(GetCurrTime, 1000);
-var checked = false;
 
 function GetCurrTime()
 {
@@ -32,6 +31,7 @@ function GetCurrTime()
 	document.getElementById("clock-01").innerHTML = "12-hour clock time: " + newHour + ":" + minute + ":" + seconds + " " + meridiem;
 }
 
+var checked = false;
 function DisplayCustom(on)
 {
 	if (on && checked == false)
@@ -81,6 +81,13 @@ function Convert12To24()
 	var sec = parseInt(document.getElementById("secId12").value);
 	var merdiem = selectedOpt == 0 ? "AM" : "PM";
 
+	// Check for proper input from the user
+	if (hour > 12 || min > 59 || sec > 59) {
+		document.getElementById("finalTime").innerHTML = "Invalid input";
+		return;
+	}
+
+	// Convert from 12 to 24 hour clock
 	if (hour >= 1 && hour <= 11 && merdiem == "PM")
 		hour += 12;
 	else if (hour == 12 && min <= 59 && merdiem == "AM")
@@ -98,6 +105,13 @@ function Convert24To12()
 	var meridiem = hour > 12 ? "PM" : "AM";
 	var newHour = hour;
 
+	// Check for proper input from the user
+	if (hour > 24 || min > 59 || sec > 59) { 
+		document.getElementById("finalTime").innerHTML = "Invalid input";
+		return;
+	}
+
+	// Convert from 24 to 12 hour clock
 	if (meridiem == "PM")
 	{
 		newHour -= 12;
